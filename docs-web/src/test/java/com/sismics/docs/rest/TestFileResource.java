@@ -58,7 +58,11 @@ public class TestFileResource extends BaseJerseyTest {
         InputStream is = (InputStream) response.getEntity();
         byte[] fileBytes = ByteStreams.toByteArray(is);
         Assert.assertTrue(fileBytes.length > 0);
-        
+        response = target().path("/file/" + file1Id + "/data")
+                .queryParam("size", "thu")
+                .request()
+                .cookie(TokenBasedSecurityFilter.COOKIE_NAME, file1Token)
+                .get();
         // Get the thumbnail data
         response = target().path("/file/" + file1Id + "/data")
                 .queryParam("size", "thumb")
