@@ -3,7 +3,7 @@ pipeline {
  stages {
  stage('Build') { 
 steps {
- sh 'mvn -B -DskipTests clean package' 
+ sh 'C:/Users/97037/Downloads/apache-maven-3.9.6-bin/apache-maven-3.9.6/bin/mvn -B -DskipTests clean package'
 }
  }
  }
