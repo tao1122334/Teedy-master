@@ -12,6 +12,16 @@ pipeline {
                 bat 'mvn pmd:pmd'
             }
         }
+        stage('Doc') {
+            steps {
+                bat 'mvn javadoc:jar'
+            }
+        }
+        stage('Test Report') {
+            steps {
+                bat 'mvn test'
+            }
+        }
     }
     post {
         always {
