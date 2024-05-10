@@ -8,15 +8,14 @@ pipeline {
         }
         stage('pmd') {
             steps {
-                // 假设你有多个子模块，分别在 submod1, submod2 文件夹中
                 dir('docs-core') {
-                    bat 'mvn install  -DskipTests'
+                    bat 'mvn clean install  -DskipTests'
                 }
                 dir('docs-web-common') {
-                    bat 'mvn install'
+                    bat 'mvn clean install'
                 }
                 dir('docs-web') {
-                    bat 'mvn install'
+                    bat 'mvn clean install'
                 }
 
                 bat 'mvn pmd:pmd'
