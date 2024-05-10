@@ -304,6 +304,12 @@
 				<version>
 					3.6.3
 				</version>
+				<configuration>
+					<!-- 忽略 Javadoc 生成过程中的错误 -->
+					<failOnError>
+						false
+					</failOnError>
+				</configuration>
 				<executions>
 					<execution>
 						<id>
