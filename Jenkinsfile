@@ -8,6 +8,7 @@ pipeline {
         }
         stage('pmd') {
             steps {
+                bat 'mvn clean install'
                 dir('docs-core') {
                     bat 'mvn clean install  -DskipTests'
                 }
