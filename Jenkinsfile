@@ -5,13 +5,13 @@ pipeline {
             steps {
                 // 假设你有多个子模块，分别在 submod1, submod2 文件夹中
                 dir('docs-core') {
-                    bat 'mvn -B install -DskipTests'
+                    bat 'mvn install -DskipTests'
                 }
                 dir('docs-web-common') {
-                    bat 'mvn -B install -DskipTests'
+                    bat 'mvn install -DskipTests'
                 }
                 dir('docs-web') {
-                    bat 'mvn -B install -DskipTests'
+                    bat 'mvn install -DskipTests'
                 }
                 // 可以继续添加更多子模块
             }
