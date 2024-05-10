@@ -8,17 +8,7 @@ pipeline {
         }
         stage('pmd') {
             steps {
-                bat 'mvn clean install'
-                dir('docs-core') {
-                    bat 'mvn clean install  -DskipTests'
-                }
-                dir('docs-web-common') {
-                    bat 'mvn clean install'
-                }
-                dir('docs-web') {
-                    bat 'mvn clean install'
-                }
-
+                bat 'mvn clean install -DskipTests'
                 bat 'mvn pmd:pmd'
             }
         }
