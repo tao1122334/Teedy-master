@@ -28,6 +28,8 @@ pipeline {
             archiveArtifacts artifacts: '**/target/site/**', fingerprint: true
             archiveArtifacts artifacts: '**/target/**/*.jar', fingerprint: true
             archiveArtifacts artifacts: '**/target/**/*.war', fingerprint: true
+            // 归档Surefire报告
+        archiveArtifacts artifacts: '**/target/custom-surefire-reports/**', fingerprint: true
         }
     }
 }
