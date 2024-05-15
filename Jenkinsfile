@@ -6,22 +6,28 @@ pipeline {
                 bat 'mvn -B -DskipTests clean package'
             }
         }
-        stage('pmd') {
-            steps {
-                bat 'mvn clean install -DskipTests'
-                bat 'mvn pmd:pmd'
+        stage('k8s'){
+            steps{
+                bat 'kubectl expose deployment hello-node --type=LoadBalancer --port=8080'
+                bat ' minikube service hello-node'
             }
         }
-        stage('Doc') {
-            steps {
-                bat 'mvn javadoc:jar'
-            }
-        }
-        stage('Test Report') {
-            steps {
-                bat 'mvn test'
-            }
-        }
+        // stage('pmd') {
+        //     steps {
+        //         bat 'mvn clean install -DskipTests'
+        //         bat 'mvn pmd:pmd'
+        //     }
+        // }
+        // stage('Doc') {
+        //     steps {
+        //         bat 'mvn javadoc:jar'
+        //     }
+        // }
+        // stage('Test Report') {
+        //     steps {
+        //         bat 'mvn test'
+        //     }
+        // }
     }
     post {
         always {
