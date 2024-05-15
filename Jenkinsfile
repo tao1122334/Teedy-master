@@ -19,7 +19,6 @@ pipeline {
                     // 确保在 node 块中运行
                     node {
                         // 使用环境变量，确保在 Windows 上正确引用
-                        bat 'kubectl expose deployment hello-node --type=LoadBalancer --port=8080 --token=%KUBERNETES_TOKEN%'
                         bat 'minikube service hello-node'
                     }
                 }
