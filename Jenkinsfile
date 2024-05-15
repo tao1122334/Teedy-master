@@ -2,7 +2,6 @@ pipeline {
     agent any
 
      environment {
-        KUBECONFIG = '/var/lib/jenkins/.kube/config'
         KUBERNETES_TOKEN = credentials('kubernetes-token')
     }
 
