@@ -17,14 +17,7 @@ pipeline {
             steps {
                 script {
                     // 启动 Minikube
-                    bat 'minikube start'
-
-                    // 设置 kubectl 使用 Minikube 上下文
-                    bat 'kubectl config use-context minikube'
-
-                    // 确认 Minikube 和 Kubernetes 状态
-                    bat 'minikube status'
-                    bat 'kubectl get nodes'
+                    bat 'minikube start --driver=docker'
                 }
                 }
             }
