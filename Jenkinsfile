@@ -16,12 +16,16 @@ pipeline {
          stage('k8s'){
             steps {
                 script {
-                    // 确保在 node 块中运行
-                    node {
-                        // 使用环境变量，确保在 Windows 上正确引用
-                        bat 'minikube start'
-                        bat 'minikube service hello-node'
-                    }
+                    // 启动 Minikube
+                    bat 'minikube start'
+
+                    // 设置 kubectl 使用 Minikube 上下文
+                    bat 'kubectl config use-context minikube'
+
+                    // 确认 Minikube 和 Kubernetes 状态
+                    bat 'minikube status'
+                    bat 'kubectl get nodes'
+                }
                 }
             }
         }
