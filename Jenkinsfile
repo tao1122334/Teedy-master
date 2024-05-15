@@ -13,8 +13,9 @@ pipeline {
             }
         }
 
-        stage('k8s'){
-            script {
+         stage('k8s'){
+            steps {
+                script {
                     // 确保在 node 块中运行
                     node {
                         // 使用环境变量，确保在 Windows 上正确引用
@@ -22,6 +23,7 @@ pipeline {
                         bat 'minikube service hello-node'
                     }
                 }
+            }
         }
         // stage('pmd') {
         //     steps {
