@@ -18,7 +18,6 @@ pipeline {
                 script {
                     // 启动 Minikube
                     bat 'minikube start --driver=docker --wait=all --extra-config=apiserver.enable-admission-plugins=NamespaceLifecycle --validate=false --wait-timeout=20m --v=9 --alsologtostderr --disable-driver-mounts'
-'
                 }
                 }
             }
