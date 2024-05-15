@@ -1,14 +1,21 @@
 pipeline {
     agent any
+
+     environment {
+        KUBECONFIG = '/var/lib/jenkins/.kube/config'
+        KUBERNETES_TOKEN = credentials('kubernetes-token')
+    }
+
     stages {
         stage('Build') {
             steps {
                 bat 'mvn -B -DskipTests clean package'
             }
         }
+
         stage('k8s'){
             steps{
-                bat 'kubectl expose deployment hello-node --type=LoadBalancer --port=8080'
+                bat 'kubectl expose deployment hello-node --type=LoadBalancer --port=8080 --token=$KUBERNETES_TOKEN'
                 bat ' minikube service hello-node'
             }
         }
