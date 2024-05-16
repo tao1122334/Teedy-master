@@ -18,8 +18,8 @@ pipeline {
                 script {
                     // 启动 Minikube
                     // bat ' minikube image load tlz970370568/teedy2024_manual:latest'
-                    bat 'mkdir ~/.kube'
-                    bat 'cp /etc/kubernetes/kubelet.conf  ~/.kube/config'
+                    bat 'mkdir %USERPROFILE%\\.kube'
+                    bat 'copy C:\\etc\\kubernetes\\kubelet.conf %USERPROFILE%\\.kube\\config'
                     bat 'kubectl expose deployment hello-node --type=LoadBalancer --port=8080'
                     bat 'minikube service hello-node'
                 }
