@@ -1,15 +1,15 @@
 pipeline {
     agent any
 
-    //  environment {
-    //     KUBECONFIG = '/var/lib/jenkins/.kube/config'
-    //     KUBERNETES_TOKEN = credentials('kubernetes-token')
-    // }
+     environment {
+        KUBECONFIG = '/var/lib/jenkins/.kube/config'
+        KUBERNETES_TOKEN = credentials('kubernetes-token')
+    }
 
     stages {
         stage('Build') {
             steps {
-                sh 'mvn -B -DskipTests clean package'
+                bat 'mvn -B -DskipTests clean package'
             }
         }
 
@@ -18,10 +18,10 @@ pipeline {
                 script {
                     // 启动 Minikube
                     // bat ' minikube image load tlz970370568/teedy2024_manual:latest'
-                    sh 'mkdir %USERPROFILE%\\.kube'
-                    sh 'copy C:\\etc\\kubernetes\\kubelet.conf %USERPROFILE%\\.kube\\config'
-                    sh 'kubectl expose deployment hello-node --type=LoadBalancer --port=8080'
-                    sh 'minikube service hello-node'
+                    // bat 'mkdir %USERPROFILE%\\.kube'
+                    // bat 'copy C:\\etc\\kubernetes\\kubelet.conf %USERPROFILE%\\.kube\\config'
+                    bat 'kubectl expose deployment hello-node --type=LoadBalancer --port=8080'
+                    bat 'minikube service hello-node'
                 }
                 }
             }
