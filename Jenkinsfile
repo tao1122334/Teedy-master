@@ -20,6 +20,7 @@ pipeline {
                     // bat ' minikube image load tlz970370568/teedy2024_manual:latest'
                     // bat 'mkdir %USERPROFILE%\\.kube'
                     // bat 'copy C:\\etc\\kubernetes\\kubelet.conf %USERPROFILE%\\.kube\\config'
+                    bat 'minikube delete'                    
                     bat 'minikube start'
                     bat 'kubectl create deployment hello-node --image=tlz970370568/teedy2024_manual:latest'
                     bat 'minikube image load tlz970370568/teedy2024_manual:latest'
